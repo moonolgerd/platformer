@@ -1,9 +1,6 @@
-﻿using System;
-
+﻿using Platformer.Views;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
-[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace Platformer
 {
     public partial class App : Application
@@ -12,10 +9,7 @@ namespace Platformer
         {
             InitializeComponent();
 
-            if (Device.RuntimePlatform == Device.iOS)
-                MainPage = new MainPage();
-            else
-                MainPage = new NavigationPage(new MainPage());
+            MainPage = new MainPage();
         }
     }
 }

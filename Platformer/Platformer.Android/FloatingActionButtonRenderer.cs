@@ -7,66 +7,66 @@ using Android.Content.Res;
 using System.ComponentModel;
 using Platformer.Android;
 
-[assembly: ExportRenderer(typeof(Platformer.FloatingActionButton), typeof(FloatingActionButtonRenderer))]
+//[assembly: ExportRenderer(typeof(Platformer.FloatingActionButton), typeof(FloatingActionButtonRenderer))]
 namespace Platformer.Android
 {
-    public class FloatingActionButtonRenderer : ViewRenderer<FloatingActionButton, FAB>
-    {
-        protected override void OnElementChanged(ElementChangedEventArgs<FloatingActionButton> e)
-        {
-            base.OnElementChanged(e);
+    //public class FloatingActionButtonRenderer : ViewRenderer<FloatingActionButton, FAB>
+    //{
+    //    protected override void OnElementChanged(ElementChangedEventArgs<FloatingActionButton> e)
+    //    {
+    //        base.OnElementChanged(e);
 
-            if (e.NewElement == null)
-                return;
+    //        if (e.NewElement == null)
+    //            return;
 
-            var fab = new FAB(Context)
-            {
-                BackgroundTintList = ColorStateList.ValueOf(Element.ButtonColor.ToAndroid()),
-            };
+    //        var fab = new FAB(Context)
+    //        {
+    //            BackgroundTintList = ColorStateList.ValueOf(Element.ButtonColor.ToAndroid()),
+    //        };
 
-            // set the icon
-            var elementImage = Element.Image;
-            var imageFile = elementImage?.File;
+    //        // set the icon
+    //        var elementImage = Element.Image;
+    //        var imageFile = elementImage?.File;
 
-            if (imageFile != null)
-            {
-                fab.SetImageDrawable(Context.Resources.GetDrawable(imageFile));
-            }
-            fab.Click += Fab_Click;
-            SetNativeControl(fab);
-        }
+    //        if (imageFile != null)
+    //        {
+    //            fab.SetImageDrawable(Context.Resources.GetDrawable(imageFile));
+    //        }
+    //        fab.Click += Fab_Click;
+    //        SetNativeControl(fab);
+    //    }
 
-        protected override void OnLayout(bool changed, int l, int t, int r, int b)
-        {
-            base.OnLayout(changed, l, t, r, b);
-            Control.BringToFront();
-        }
+    //    protected override void OnLayout(bool changed, int l, int t, int r, int b)
+    //    {
+    //        base.OnLayout(changed, l, t, r, b);
+    //        Control.BringToFront();
+    //    }
 
-        protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            var fab = (FAB)Control;
-            if (e.PropertyName == nameof(Element.ButtonColor))
-            {
-                fab.BackgroundTintList = ColorStateList.ValueOf(Element.ButtonColor.ToAndroid());
-            }
-            if (e.PropertyName == nameof(Element.Image))
-            {
-                var elementImage = Element.Image;
-                var imageFile = elementImage?.File;
+    //    protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
+    //    {
+    //        var fab = (FAB)Control;
+    //        if (e.PropertyName == nameof(Element.ButtonColor))
+    //        {
+    //            fab.BackgroundTintList = ColorStateList.ValueOf(Element.ButtonColor.ToAndroid());
+    //        }
+    //        if (e.PropertyName == nameof(Element.Image))
+    //        {
+    //            var elementImage = Element.Image;
+    //            var imageFile = elementImage?.File;
 
-                if (imageFile != null)
-                {
-                    fab.SetImageDrawable(Context.Resources.GetDrawable(imageFile));
-                }
-            }
-            base.OnElementPropertyChanged(sender, e);
+    //            if (imageFile != null)
+    //            {
+    //                fab.SetImageDrawable(Context.Resources.GetDrawable(imageFile));
+    //            }
+    //        }
+    //        base.OnElementPropertyChanged(sender, e);
 
-        }
+    //    }
 
-        private void Fab_Click(object sender, EventArgs e)
-        {
-            // proxy the click to the element
-            ((IButtonController)Element).SendClicked();
-        }
-    }
+    //    private void Fab_Click(object sender, EventArgs e)
+    //    {
+    //        // proxy the click to the element
+    //        ((IButtonController)Element).SendClicked();
+    //    }
+    //}
 }
