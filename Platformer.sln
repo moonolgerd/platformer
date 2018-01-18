@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2005
+VisualStudioVersion = 15.0.27130.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Platformer", "Platformer\Platformer\Platformer.csproj", "{BEFF0F2A-F299-4A8F-925F-190941BA72C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Platformer", "Platformer\Platformer\Platformer.csproj", "{BEFF0F2A-F299-4A8F-925F-190941BA72C1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Platformer.Android", "Platformer\Platformer.Android\Platformer.Android.csproj", "{6FB7801E-2DE4-42EB-B6E6-A914AE052222}"
 EndProject

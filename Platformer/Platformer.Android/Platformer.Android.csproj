@@ -1,90 +1,101 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-	<PropertyGroup>
-		<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-		<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-		<ProjectGuid>{6FB7801E-2DE4-42EB-B6E6-A914AE052222}</ProjectGuid>
-		<ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-		<OutputType>Library</OutputType>
-		<RootNamespace>Platformer.Droid</RootNamespace>
-		<AssemblyName>Platformer.Android</AssemblyName>
-		<TargetFrameworkVersion>v7.1</TargetFrameworkVersion>
-		<AndroidApplication>True</AndroidApplication>
-		<AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
-		<AndroidResgenClass>Resource</AndroidResgenClass>
-		<AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
-		<MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
-		<MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-		<AndroidUseLatestPlatformSdk>true</AndroidUseLatestPlatformSdk>
-		<NuGetPackageImportStamp>
-		</NuGetPackageImportStamp>
-		<AndroidTlsProvider>
-		</AndroidTlsProvider>
-	</PropertyGroup>
-	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-		<DebugSymbols>true</DebugSymbols>
-		<DebugType>full</DebugType>
-		<Optimize>false</Optimize>
-		<OutputPath>bin\Debug</OutputPath>
-		<DefineConstants>DEBUG;</DefineConstants>
-		<ErrorReport>prompt</ErrorReport>
-		<WarningLevel>4</WarningLevel>
-		<AndroidLinkMode>None</AndroidLinkMode>
-	</PropertyGroup>
-	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-		<DebugSymbols>true</DebugSymbols>
-		<DebugType>pdbonly</DebugType>
-		<Optimize>true</Optimize>
-		<OutputPath>bin\Release</OutputPath>
-		<ErrorReport>prompt</ErrorReport>
-		<WarningLevel>4</WarningLevel>
-		<AndroidManagedSymbols>true</AndroidManagedSymbols>
-		<AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
-	</PropertyGroup>
-	<ItemGroup>
-		<Reference Include="System" />
-		<Reference Include="System.Xml" />
-		<Reference Include="System.Core" />
-		<Reference Include="Mono.Android" />
-		<Reference Include="System.Net.Http" />
-	</ItemGroup>
-	<ItemGroup>
-		<PackageReference Include="Xamarin.Forms" Version="2.5.0.121934" />
-		<PackageReference Include="Xamarin.Android.Support.Design" Version="25.4.0.2" />
-		<PackageReference Include="Xamarin.Android.Support.v7.AppCompat" Version="25.4.0.2" />
-		<PackageReference Include="Xamarin.Android.Support.v4" Version="25.4.0.2" />
-		<PackageReference Include="Xamarin.Android.Support.v7.CardView" Version="25.4.0.2" />
-		<PackageReference Include="Xamarin.Android.Support.v7.MediaRouter" Version="25.4.0.2" />
-	</ItemGroup>
-	<ItemGroup>
-		<Compile Include="FloatingActionButtonRenderer.cs" />
-		<Compile Include="MainActivity.cs" />
-		<Compile Include="Resources\Resource.designer.cs" />
-		<Compile Include="Properties\AssemblyInfo.cs" />
-	</ItemGroup>
-	<ItemGroup>
-		<None Include="Resources\AboutResources.txt" />
-		<None Include="Properties\AndroidManifest.xml" />
-		<None Include="Assets\AboutAssets.txt" />
-	</ItemGroup>
-	<ItemGroup>
-		<AndroidResource Include="Resources\layout\Tabbar.axml" />
-		<AndroidResource Include="Resources\layout\Toolbar.axml" />
-		<AndroidResource Include="Resources\values\styles.xml" />
-		<AndroidResource Include="Resources\drawable\icon.png" />
-		<AndroidResource Include="Resources\drawable\xamarin_logo.png" />
-		<AndroidResource Include="Resources\drawable-hdpi\icon.png" />
-		<AndroidResource Include="Resources\drawable-xhdpi\icon.png" />
-		<AndroidResource Include="Resources\drawable-xxhdpi\icon.png" />
-	</ItemGroup>
-	<ItemGroup>
-		<ProjectReference Include="..\Platformer\Platformer.csproj">
-			<Project>{6bac7310-21a9-4aae-8d88-dced05fdce13}</Project>
-			<Name>Platformer</Name>
-		</ProjectReference>
-	</ItemGroup>
-	<ItemGroup>
-		<AndroidResource Include="Resources\drawable\plus_icon.png" />
-	</ItemGroup>
-	<Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6FB7801E-2DE4-42EB-B6E6-A914AE052222}</ProjectGuid>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Platformer.Droid</RootNamespace>
+    <AssemblyName>Platformer.Android</AssemblyName>
+    <TargetFrameworkVersion>v7.1</TargetFrameworkVersion>
+    <AndroidApplication>True</AndroidApplication>
+    <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
+    <AndroidResgenClass>Resource</AndroidResgenClass>
+    <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
+    <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
+    <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
+    <AndroidUseLatestPlatformSdk>true</AndroidUseLatestPlatformSdk>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <AndroidTlsProvider>
+    </AndroidTlsProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidLinkMode>None</AndroidLinkMode>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidManagedSymbols>true</AndroidManagedSymbols>
+    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Mono.Android" />
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Firebase.Messaging">
+      <Version>42.1021.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Forms" Version="2.5.0.121934" />
+    <PackageReference Include="Xamarin.Android.Support.Design" Version="25.4.0.2" />
+    <PackageReference Include="Xamarin.Android.Support.v7.AppCompat" Version="25.4.0.2" />
+    <PackageReference Include="Xamarin.Android.Support.v4" Version="25.4.0.2" />
+    <PackageReference Include="Xamarin.Android.Support.v7.CardView" Version="25.4.0.2" />
+    <PackageReference Include="Xamarin.Android.Support.v7.MediaRouter" Version="25.4.0.2" />
+    <PackageReference Include="Xamarin.GooglePlayServices.Base">
+      <Version>42.1021.1</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MyFirebaseMessagingService.cs" />
+    <Compile Include="MyFirebaseIIDService.cs" />
+    <Compile Include="FloatingActionButtonRenderer.cs" />
+    <Compile Include="MainActivity.cs" />
+    <Compile Include="Resources\Resource.designer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <GoogleServicesJson Include="google-services.json" />
+    <None Include="Resources\AboutResources.txt" />
+    <None Include="Properties\AndroidManifest.xml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Assets\AboutAssets.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\Tabbar.axml" />
+    <AndroidResource Include="Resources\layout\Toolbar.axml" />
+    <AndroidResource Include="Resources\values\styles.xml" />
+    <AndroidResource Include="Resources\drawable\icon.png" />
+    <AndroidResource Include="Resources\drawable\xamarin_logo.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Platformer\Platformer.csproj">
+      <Project>{6bac7310-21a9-4aae-8d88-dced05fdce13}</Project>
+      <Name>Platformer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\plus_icon.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
