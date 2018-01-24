@@ -1,5 +1,5 @@
 ﻿using System;
-
+using Platformer.ViewModels;
 using Xamarin.Forms;
 
 namespace Platformer

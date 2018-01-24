@@ -1,12 +1,10 @@
-﻿using Platformer.ViewModels;
-using System;
+﻿using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 
-namespace Platformer
+namespace Platformer.ViewModels
 {
     public class ItemsViewModel : BaseViewModel
     {

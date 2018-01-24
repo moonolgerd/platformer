@@ -12,7 +12,7 @@ namespace Platformer
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new LoginPage());
         }
 
         protected override void OnStart()
@@ -20,7 +20,7 @@ namespace Platformer
             AppCenter.Start("android=f6bc5a20-8654-41c4-b424-3dc689594aa8;" + "uwp={Your UWP App secret here};" +
                    "ios=55099f39-256e-4196-b8eb-5873ee91e95e;",
                    typeof(Analytics), typeof(Crashes));
-            base.OnStart();
+            base.OnStart(); 
         }
     }
 }

@@ -5,6 +5,7 @@ using Android.OS;
 using Android.Gms.Common;
 using Android.Util;
 using Firebase.Messaging;
+using System;
 
 namespace Platformer.Droid
 {
@@ -24,7 +25,14 @@ namespace Platformer.Droid
 
             LoadApplication(new App());
 
-            FirebaseMessaging.Instance.SubscribeToTopic("news");
+            try
+            {
+                FirebaseMessaging.Instance.SubscribeToTopic("news");
+            }
+            catch (Exception ex)
+            {
+                Log.Debug(TAG, ex.Message);
+            }
 
             if (Intent.Extras != null)
             {

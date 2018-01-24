@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Windows.Input;
-
 using Xamarin.Forms;
 
-namespace Platformer
+namespace Platformer.ViewModels
 {
     public class AboutViewModel : BaseViewModel
     {
