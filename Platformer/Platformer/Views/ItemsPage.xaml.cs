@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-
+using Platformer.ViewModels;
 using Xamarin.Forms;
 
 namespace Platformer

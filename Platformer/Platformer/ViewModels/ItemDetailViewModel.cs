@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Platformer
+﻿namespace Platformer.ViewModels
 {
     public class ItemDetailViewModel : BaseViewModel
     {

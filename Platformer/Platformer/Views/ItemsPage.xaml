@@ -2,8 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Platformer.ItemsPage"
-             xmlns:controls="clr-namespace:Platformer; assembly=Platformer"
-              Title="{Binding Title}"
+             xmlns:platformer="clr-namespace:Platformer;assembly=Platformer"
+             Title="{Binding Title}"
              x:Name="BrowseItemsPage">
     <ContentPage.Content>
 		<StackLayout>
@@ -33,7 +33,7 @@
 					</DataTemplate>
 				</ListView.ItemTemplate>
 			</ListView>
-            <controls:FloatingActionButton x:Name="FAB" 
+            <platformer:FloatingActionButton x:Name="FAB" 
                                            HorizontalOptions="EndAndExpand" 
                                            WidthRequest="50" 
                                            HeightRequest="50" 

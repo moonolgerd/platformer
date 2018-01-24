@@ -1,5 +1,6 @@
-﻿using System;
-
+﻿using Plugin.Fingerprint;
+using System;
+using System.Diagnostics;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -11,6 +12,8 @@ namespace Platformer.Views
 		public MainPage ()
 		{
 			InitializeComponent ();
-		}
+
+            
+        }
 	}
 }

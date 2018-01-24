@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             xmlns:local="clr-namespace:Platformer.ViewModels; assembly=Platformer"
+             xmlns:viewModels="clr-namespace:Platformer.ViewModels;assembly=Platformer"
              x:Class="Platformer.NewItemPage"
 		Title="New Item">
     <ContentPage.BindingContext>
-        <local:NewItemViewModel />
+        <viewModels:NewItemViewModel />
     </ContentPage.BindingContext>
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Save" Command="{Binding SaveCommand}" />

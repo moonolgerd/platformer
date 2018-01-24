@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-
 using Xamarin.Forms;
 
-namespace Platformer
+namespace Platformer.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {

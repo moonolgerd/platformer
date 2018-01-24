@@ -3,7 +3,7 @@ using Xamarin.Forms;
 
 namespace Platformer.ViewModels
 {
-    class NewItemViewModel : BaseViewModel
+    internal class NewItemViewModel : BaseViewModel
     {
         public NewItemViewModel()
         {
