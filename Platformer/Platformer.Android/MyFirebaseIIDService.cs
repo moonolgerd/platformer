@@ -2,6 +2,9 @@
 using Android.Content;
 using Android.Util;
 using Firebase.Iid;
+using Newtonsoft.Json;
+using System.Net.Http;
+using System.Text;
 
 namespace Platformer.Droid
 {
@@ -18,7 +21,13 @@ namespace Platformer.Droid
         }
         void SendRegistrationToServer(string token)
         {
-            // Add custom implementation, as needed.
+            var data = JsonConvert.SerializeObject(new
+            {
+                Token = token
+            });
+            var client = new HttpClient();
+            client.PostAsync("http://10.0.2.2:3000/register",
+                new StringContent(data, Encoding.UTF8, "application/json"));
         }
     }
 }
