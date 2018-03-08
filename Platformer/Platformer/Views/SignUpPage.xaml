@@ -2,21 +2,22 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:Platformer.ViewModels;assembly=Platformer"
-             Title="Login"
-             x:Class="Platformer.Views.LoginPage">
+             x:Class="Platformer.Views.SignUpPage"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <ContentPage.BindingContext>
-        <viewModels:LoginViewModel />
+        <viewModels:SignUpViewModel />
     </ContentPage.BindingContext>
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Sign Up" Command="{Binding SignUpCommand}" />
-    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Email" FontSize="Medium" />
             <Entry Text="{Binding Email}" FontSize="Small" Placeholder="Email"/>
             <Label Text="Password" FontSize="Medium" />
             <Entry Text="{Binding Password}" FontSize="Small" Placeholder="Password" IsPassword="True"/>
-            <Button Command="{Binding LoginCommand}" Text="Login" />
+            <Label Text="Confirm Password" FontSize="Medium" />
+            <Entry Text="{Binding ConfirmPassword}" FontSize="Small" Placeholder="Password" IsPassword="True"/>
+            <Label Text="Date of Birth" FontSize="Medium" />
+            <DatePicker Date="{Binding DateOfBirth}" Format="d" />
+            <Button Command="{Binding RegisterCommand}" Text="Register" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

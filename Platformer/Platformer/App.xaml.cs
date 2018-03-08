@@ -12,8 +12,17 @@ namespace Platformer
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new LoginPage());
+            if (!IsUserLoggedIn)
+            {
+                MainPage = new NavigationPage(new LoginPage());
+            }
+            else
+            {
+                MainPage = new NavigationPage(new MainPage());
+            }
         }
+
+        public static bool IsUserLoggedIn { get; set; }
 
         protected override void OnStart()
         {
