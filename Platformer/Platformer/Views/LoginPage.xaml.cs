@@ -1,42 +1,40 @@
-﻿using Plugin.Fingerprint;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
+﻿using Platformer.ViewModels;
+using Plugin.Fingerprint;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace Platformer.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class LoginPage : ContentPage
-	{
-		public LoginPage ()
-		{
-			InitializeComponent ();
-		}
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class LoginPage : ContentPage
+    {
+        public LoginPage()
+        {
+            InitializeComponent();
+            MessagingCenter.Subscribe<LoginViewModel>(this, "Success", async (obj) => await Login());
+            MessagingCenter.Subscribe<LoginViewModel>(this, "SignUp", async (obj) => await SignUp());
+        }
 
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
 
-            CrossFingerprint.Current.AuthenticateAsync("Login using your fingerprint").ContinueWith(result =>
-            {
-                if (result.Result.Authenticated)
-                {
-                    Navigation.PushAsync(new MainPage()).ContinueWith(res =>
-                    {
-                        Debug.WriteLine("success");
-                    });
-                }
-                else
-                {
-                    Debug.WriteLine("forbidden");
-                }
-            });
+            var result = await CrossFingerprint.Current.AuthenticateAsync("Login using your fingerprint");
+            if (result.Authenticated)
+                await Login();
+        }
+
+        private async Task Login()
+        {
+            App.IsUserLoggedIn = true;
+            Navigation.InsertPageBefore(new MainPage(), this);
+            await Navigation.PopAsync();
+        }
+
+        private async Task SignUp()
+        {
+            await Navigation.PushAsync(new SignUpPage());
         }
     }
 }

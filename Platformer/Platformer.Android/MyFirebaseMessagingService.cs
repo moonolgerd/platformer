@@ -29,7 +29,7 @@ namespace Platformer.Droid
             var pendingIntent = PendingIntent.GetActivity(this, 0, intent, PendingIntentFlags.OneShot);
 
             var notificationBuilder = new Notification.Builder(this)
-                .SetSmallIcon(Resource.Drawable.ic_vol_type_speaker_light)
+                //.SetSmallIcon(Resource.Drawable.ic_vol_type_speaker_light)
                 .SetContentTitle(notification.Title)
                 .SetContentText(notification.Body)
                 .SetAutoCancel(true)
