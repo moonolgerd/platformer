@@ -18,7 +18,7 @@ namespace Platformer.ViewModels
             }, CanExecute);
         }
 
-        public Command RegisterCommand { get; set; }
+        public Command RegisterCommand { get; }
 
         public string Email
         {
@@ -31,7 +31,8 @@ namespace Platformer.ViewModels
         }
         public string Password
         {
-            get => _password; set
+            get => _password;
+            set
             {
                 SetProperty(ref _password, value);
                 RegisterCommand.ChangeCanExecute();
@@ -40,7 +41,8 @@ namespace Platformer.ViewModels
 
         public string ConfirmPassword
         {
-            get => _confirmPassword; set
+            get => _confirmPassword;
+            set
             {
                 SetProperty(ref _confirmPassword, value);
                 RegisterCommand.ChangeCanExecute();
@@ -50,10 +52,7 @@ namespace Platformer.ViewModels
         public DateTime DateOfBirth
         {
             get => _dateOfBirth;
-            set
-            {
-                SetProperty(ref _dateOfBirth, value);
-            }
+            set => SetProperty(ref _dateOfBirth, value);
         }
 
         bool CanExecute() => !string.IsNullOrWhiteSpace(Email) && !string.IsNullOrWhiteSpace(Password) && Password == ConfirmPassword;
