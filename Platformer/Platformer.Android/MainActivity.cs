@@ -6,6 +6,7 @@ using Android.Gms.Common;
 using Android.Util;
 using Firebase.Messaging;
 using System;
+using Microsoft.AppCenter.Push;
 
 namespace Platformer.Droid
 {
@@ -22,7 +23,7 @@ namespace Platformer.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
-
+            Push.SetSenderId("1011362886006");
             LoadApplication(new App());
 
             try
