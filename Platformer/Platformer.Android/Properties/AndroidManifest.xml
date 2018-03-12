@@ -3,6 +3,10 @@
 	<uses-sdk android:minSdkVersion="24" android:targetSdkVersion="26" />
 	<uses-permission android:name="android.permission.USE_FINGERPRINT" />
 	<uses-permission android:name="com.samsung.android.providers.context.permission.WRITE_USE_APP_FEATURE_SURVEY" />
+	<permission android:protectionLevel="signature"
+	            android:name="${applicationId}.permission.C2D_MESSAGE" />
+	<uses-permission
+		android:name="${applicationId}.permission.C2D_MESSAGE" />
 	<application android:label="Platformer.Android">
 		<receiver android:name="com.google.firebase.iid.FirebaseInstanceIdInternalReceiver" android:exported="false" />
 		<receiver android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver" android:exported="true" android:permission="com.google.android.c2dm.permission.SEND">
