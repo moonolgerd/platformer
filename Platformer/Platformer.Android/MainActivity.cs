@@ -7,6 +7,10 @@ using Android.Util;
 using Firebase.Messaging;
 using System;
 using Microsoft.AppCenter.Push;
+using Microsoft.AppCenter;
+using Newtonsoft.Json;
+using System.Net.Http;
+using System.Text;
 
 namespace Platformer.Droid
 {
@@ -15,7 +19,7 @@ namespace Platformer.Droid
     {
         const string TAG = "MainActivity";
 
-        protected override void OnCreate(Bundle bundle)
+        protected async override void OnCreate(Bundle bundle)
         {
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
@@ -23,7 +27,9 @@ namespace Platformer.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+
             Push.SetSenderId("1011362886006");
+
             LoadApplication(new App());
 
             try
@@ -45,6 +51,18 @@ namespace Platformer.Droid
             }
 
             IsPlayServicesAvailable();
+
+            var isEnabled = await Push.IsEnabledAsync();
+            var id = await AppCenter.GetInstallIdAsync();
+            Log.Debug(id.ToString(), id.ToString());
+
+            //var data = JsonConvert.SerializeObject(new
+            //{
+            //    Token = id.ToString()
+            //});
+            //var client = new HttpClient();
+            //await client.PostAsync("http://10.0.2.2:3000/register",
+            //    new StringContent(data, Encoding.UTF8, "application/json"));
         }
 
         public bool IsPlayServicesAvailable()
