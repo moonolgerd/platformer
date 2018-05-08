@@ -27,10 +27,35 @@ namespace Platformer
 
         protected override void OnStart()
         {
-            //AppCenter.Start("android=f6bc5a20-8654-41c4-b424-3dc689594aa8;" + "uwp={Your UWP App secret here};" +
-            //       "ios=55099f39-256e-4196-b8eb-5873ee91e95e;",
-            //       typeof(Analytics), typeof(Crashes));
-            AppCenter.Start("532dbeda-61d3-4593-8cf8-de182d9af591", typeof(Push));
+            if (!AppCenter.Configured)
+            {
+                Push.PushNotificationReceived += (sender, e) =>
+                {
+                    // Add the notification message and title to the message
+                    var summary = $"Push notification received:" +
+                                        $"\n\tNotification title: {e.Title}" +
+                                        $"\n\tMessage: {e.Message}";
+
+                    // If there is custom data associated with the notification,
+                    // print the entries
+                    if (e.CustomData != null)
+                    {
+                        summary += "\n\tCustom data:\n";
+                        foreach (var key in e.CustomData.Keys)
+                        {
+                            summary += $"\t\t{key} : {e.CustomData[key]}\n";
+                        }
+                    }
+
+                    // Send the notification summary to debug output
+                    System.Diagnostics.Debug.WriteLine(summary);
+                };
+            }
+
+            AppCenter.Start("android=f6bc5a20-8654-41c4-b424-3dc689594aa8;" + "uwp={Your UWP App secret here};" +
+                   "ios=55099f39-256e-4196-b8eb-5873ee91e95e;",
+                   typeof(Analytics), typeof(Crashes));
+            AppCenter.Start("f6bc5a20-8654-41c4-b424-3dc689594aa8", typeof(Push));
             base.OnStart(); 
         }
     }
