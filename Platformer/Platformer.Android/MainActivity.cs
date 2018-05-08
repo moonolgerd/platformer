@@ -2,9 +2,7 @@
 using Android.Content;
 using Android.Content.PM;
 using Android.OS;
-using Android.Gms.Common;
 using Android.Util;
-using Firebase.Messaging;
 using System;
 using Microsoft.AppCenter.Push;
 using Microsoft.AppCenter;
@@ -32,15 +30,6 @@ namespace Platformer.Droid
 
             LoadApplication(new App());
 
-            try
-            {
-                FirebaseMessaging.Instance.SubscribeToTopic("news");
-            }
-            catch (Exception ex)
-            {
-                Log.Debug(TAG, ex.Message);
-            }
-
             if (Intent.Extras != null)
             {
                 foreach (var key in Intent.Extras.KeySet())
@@ -50,7 +39,7 @@ namespace Platformer.Droid
                 }
             }
 
-            IsPlayServicesAvailable();
+            //IsPlayServicesAvailable();
 
             var isEnabled = await Push.IsEnabledAsync();
             var id = await AppCenter.GetInstallIdAsync();
@@ -64,29 +53,5 @@ namespace Platformer.Droid
             //await client.PostAsync("http://10.0.2.2:3000/register",
             //    new StringContent(data, Encoding.UTF8, "application/json"));
         }
-
-        public bool IsPlayServicesAvailable()
-        {
-            int resultCode = GoogleApiAvailability.Instance.IsGooglePlayServicesAvailable(this);
-            if (resultCode != ConnectionResult.Success)
-            {
-                if (GoogleApiAvailability.Instance.IsUserResolvableError(resultCode))
-                    System.Diagnostics.Debug.WriteLine(GoogleApiAvailability.Instance.GetErrorString(resultCode));
-                else
-                {
-                    System.Diagnostics.Debug.WriteLine("This device is not supported");
-                    Finish();
-                }
-                return false;
-            }
-            else
-            {
-                System.Diagnostics.Debug.WriteLine("Google Play Services is available.");
-                return true;
-            }
-        }
-
-        protected override void OnActivityResult(int requestCode, Result resultCode, Intent data) 
-            => base.OnActivityResult(requestCode, resultCode, data);
     }
 }
