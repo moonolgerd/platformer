@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using Microsoft.AppCenter.Analytics;
+using Xamarin.Forms;
 
 namespace Platformer.ViewModels
 {
@@ -12,6 +13,7 @@ namespace Platformer.ViewModels
             LoginCommand = new Command(() =>
             {
                 MessagingCenter.Send(this, "Success");
+                Analytics.TrackEvent("Logged in successfully");
             }, CanExecute);
             SignUpCommand = new Command(() =>
             {
