@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
+using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
@@ -28,6 +30,7 @@ namespace Platformer.ViewModels
                 var _item = item as Item;
                 Items.Add(_item);
                 await DataStore.AddItemAsync(_item);
+                Analytics.TrackEvent($"New item added {_item}");
             });
         }
 
@@ -42,6 +45,7 @@ namespace Platformer.ViewModels
             {
                 Items.Clear();
                 var items = await DataStore.GetItemsAsync(true);
+                throw new ApplicationException("My Error Message");
                 foreach (var item in items)
                 {
                     Items.Add(item);
@@ -50,6 +54,8 @@ namespace Platformer.ViewModels
             catch (Exception ex)
             {
                 Debug.WriteLine(ex);
+                Crashes.TrackError(ex);
+
             }
             finally
             {
