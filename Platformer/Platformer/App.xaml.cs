@@ -52,8 +52,9 @@ namespace Platformer
                 };
             }
 
-            AppCenter.Start("android=f6bc5a20-8654-41c4-b424-3dc689594aa8;" + "ios=55099f39-256e-4196-b8eb-5873ee91e95e;",
-                   typeof(Analytics), typeof(Crashes), typeof(Push));
+            AppCenter.Start("android=f6bc5a20-8654-41c4-b424-3dc689594aa8",
+                typeof(Analytics), typeof(Crashes), typeof(Push));
+            AppCenter.LogLevel = LogLevel.Verbose;
             base.OnStart(); 
         }
     }

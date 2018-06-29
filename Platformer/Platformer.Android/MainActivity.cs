@@ -17,7 +17,7 @@ namespace Platformer.Droid
     {
         const string TAG = "MainActivity";
 
-        protected async override void OnCreate(Bundle bundle)
+        protected override async void OnCreate(Bundle bundle)
         {
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
@@ -39,9 +39,6 @@ namespace Platformer.Droid
                 }
             }
 
-            //IsPlayServicesAvailable();
-
-            var isEnabled = await Push.IsEnabledAsync();
             var id = await AppCenter.GetInstallIdAsync();
             Log.Debug(id.ToString(), id.ToString());
 

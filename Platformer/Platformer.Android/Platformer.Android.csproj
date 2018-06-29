@@ -77,15 +77,12 @@
   <ItemGroup>
     <Compile Include="CloseApplication.cs" />
     <Compile Include="MainApplication.cs" />
-    <Compile Include="MyFirebaseMessagingService.cs" />
-    <Compile Include="MyFirebaseIIDService.cs" />
     <Compile Include="FloatingActionButtonRenderer.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <GoogleServicesJson Include="google-services.json" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Properties\AndroidManifest.xml">
       <SubType>Designer</SubType>
