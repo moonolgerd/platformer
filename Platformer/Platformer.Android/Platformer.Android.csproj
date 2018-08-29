@@ -76,6 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CloseApplication.cs" />
+    <Compile Include="FileStorage.cs" />
     <Compile Include="MainApplication.cs" />
     <Compile Include="FloatingActionButtonRenderer.cs" />
     <Compile Include="MainActivity.cs" />
@@ -83,6 +84,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidAsset Include="..\Platformer\config.json">
+      <Link>Assets\config.json</Link>
+    </AndroidAsset>
     <None Include="Resources\AboutResources.txt" />
     <None Include="Properties\AndroidManifest.xml">
       <SubType>Designer</SubType>
@@ -107,6 +111,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\plus_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\platform.json" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

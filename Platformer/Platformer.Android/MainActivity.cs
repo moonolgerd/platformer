@@ -9,6 +9,8 @@ using Microsoft.AppCenter;
 using Newtonsoft.Json;
 using System.Net.Http;
 using System.Text;
+using Platformer.Interfaces;
+using System.Threading.Tasks;
 
 namespace Platformer.Droid
 {
@@ -42,6 +44,8 @@ namespace Platformer.Droid
             var id = await AppCenter.GetInstallIdAsync();
             Log.Debug(id.ToString(), id.ToString());
 
+            var foo = await Build(new FileStorage());
+
             //var data = JsonConvert.SerializeObject(new
             //{
             //    Token = id.ToString()
@@ -49,6 +53,21 @@ namespace Platformer.Droid
             //var client = new HttpClient();
             //await client.PostAsync("http://10.0.2.2:3000/register",
             //    new StringContent(data, Encoding.UTF8, "application/json"));
+        }
+
+        public static async Task<IConfiguration> Build(IFileStorage fileStorage)
+        {
+            var platformFile = await fileStorage.ReadAsString("platform.json");
+
+            var platform = JsonConvert.DeserializeObject<Platform>(platformFile);
+
+            var configurationFile = await fileStorage.ReadAsString("config.json");
+
+            var configuration = JsonConvert.DeserializeObject<Configuration>(configurationFile);
+
+            configuration.Platform = platform;
+
+            return configuration;
         }
     }
 }
