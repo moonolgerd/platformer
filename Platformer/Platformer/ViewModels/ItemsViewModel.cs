@@ -10,10 +10,10 @@ namespace Platformer.ViewModels
 {
     public class ItemsViewModel : BaseViewModel
     {
-        public ObservableCollection<Item> Items { get; set; }
-        public Command LoadItemsCommand { get; set; }
+        public ObservableCollection<Item> Items { get; }
+        public Command LoadItemsCommand { get; }
 
-        public Command AddCommand { get; set; }
+        public Command AddCommand { get; }
 
         public ItemsViewModel()
         {
@@ -27,10 +27,9 @@ namespace Platformer.ViewModels
 
             MessagingCenter.Subscribe<NewItemViewModel, Item>(this, "AddItem", async (obj, item) =>
             {
-                var _item = item as Item;
-                Items.Add(_item);
-                await DataStore.AddItemAsync(_item);
-                Analytics.TrackEvent($"New item added {_item}");
+                Items.Add(item);
+                await DataStore.AddItemAsync(item);
+                Analytics.TrackEvent($"New item added {item}");
             });
         }
 
@@ -45,7 +44,6 @@ namespace Platformer.ViewModels
             {
                 Items.Clear();
                 var items = await DataStore.GetItemsAsync(true);
-                throw new ApplicationException("My Error Message");
                 foreach (var item in items)
                 {
                     Items.Add(item);
