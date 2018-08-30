@@ -4,6 +4,9 @@ using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 using Microsoft.AppCenter.Push;
+using System.Diagnostics;
+using System.IO;
+using System.Reflection;
 
 namespace Platformer
 {
@@ -12,6 +15,25 @@ namespace Platformer
         public App()
         {
             InitializeComponent();
+            var assembly = Assembly.GetExecutingAssembly();
+
+#if PRODUCTION
+            Debug.WriteLine("Loading Configuration for Production");
+            Stream stream = assembly.GetManifestResourceStream($"{nameof(Platformer)}.appsettings.Production.json");
+#elif STAGING
+            Debug.WriteLine("Loading Configuration for Staging");
+            Stream stream = assembly.GetManifestResourceStream($"{nameof(Platformer)}.appsettings.Staging.json");
+#else
+            Debug.WriteLine("Loading Configuration for Development");
+            Stream stream = assembly.GetManifestResourceStream($"{nameof(Platformer)}.appsettings.Development.json");
+#endif
+            var text = string.Empty;
+
+            using (var reader = new StreamReader(stream))
+                text = reader.ReadToEnd();
+                        
+            Debug.WriteLine(text);
+
 
             if (!IsUserLoggedIn)
             {
