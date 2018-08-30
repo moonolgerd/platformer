@@ -5,8 +5,8 @@ using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 using Microsoft.AppCenter.Push;
 using System.Diagnostics;
-using System.IO;
-using System.Reflection;
+using Microsoft.Extensions.Configuration;
+using Platformer.Configuration;
 
 namespace Platformer
 {
@@ -15,25 +15,20 @@ namespace Platformer
         public App()
         {
             InitializeComponent();
-            var assembly = Assembly.GetExecutingAssembly();
-
+            
 #if PRODUCTION
             Debug.WriteLine("Loading Configuration for Production");
-            Stream stream = assembly.GetManifestResourceStream($"{nameof(Platformer)}.appsettings.Production.json");
+            var file = $"{nameof(Platformer)}.appsettings.Production.json";
 #elif STAGING
             Debug.WriteLine("Loading Configuration for Staging");
-            Stream stream = assembly.GetManifestResourceStream($"{nameof(Platformer)}.appsettings.Staging.json");
+            var file = $"{nameof(Platformer)}.appsettings.Staging.json";
 #else
             Debug.WriteLine("Loading Configuration for Development");
-            Stream stream = assembly.GetManifestResourceStream($"{nameof(Platformer)}.appsettings.Development.json");
+            var file = $"{nameof(Platformer)}.appsettings.Development.json";
 #endif
-            var text = string.Empty;
 
-            using (var reader = new StreamReader(stream))
-                text = reader.ReadToEnd();
-                        
-            Debug.WriteLine(text);
-
+            var config = new ConfigurationBuilder().AddJsonFile(new ResourceFileProvider(), file, false, false).Build();
+            var environment = config["Environment"];
 
             if (!IsUserLoggedIn)
             {
