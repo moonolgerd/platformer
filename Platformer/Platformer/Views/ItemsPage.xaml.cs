@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AppCenter.Analytics;
 using Platformer.ViewModels;
 using Xamarin.Forms;
 
@@ -25,6 +26,10 @@ namespace Platformer
             var item = args.SelectedItem as Item;
             if (item == null)
                 return;
+            Analytics.TrackEvent($"Item selected", new Dictionary<string, string>
+            {
+                ["Item"] = item.ToString()
+            });
 
             await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item)));
 

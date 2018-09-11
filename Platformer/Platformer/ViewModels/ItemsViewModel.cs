@@ -1,6 +1,7 @@
 ﻿using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
@@ -27,10 +28,13 @@ namespace Platformer.ViewModels
 
             MessagingCenter.Subscribe<NewItemViewModel, Item>(this, "AddItem", async (obj, item) =>
             {
-                var _item = item as Item;
-                Items.Add(_item);
-                await DataStore.AddItemAsync(_item);
-                Analytics.TrackEvent($"New item added {_item}");
+                var myItem = item as Item;
+                Items.Add(myItem);
+                await DataStore.AddItemAsync(myItem);
+                Analytics.TrackEvent($"New item added", new Dictionary<string, string>
+                {
+                    ["Item"] = myItem.ToString()
+                });
             });
         }
 
@@ -45,7 +49,6 @@ namespace Platformer.ViewModels
             {
                 Items.Clear();
                 var items = await DataStore.GetItemsAsync(true);
-                throw new ApplicationException("My Error Message");
                 foreach (var item in items)
                 {
                     Items.Add(item);
