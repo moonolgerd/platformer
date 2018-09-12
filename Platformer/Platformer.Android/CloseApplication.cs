@@ -1,6 +1,5 @@
-﻿using Android.App;
-using Platformer.Interfaces;
-using Xamarin.Forms;
+﻿using Platformer.Interfaces;
+using Plugin.CurrentActivity;
 
 namespace Platformer.Droid
 {
@@ -8,7 +7,7 @@ namespace Platformer.Droid
     {
         public void Close()
         {
-            var activity = (Activity)Forms.Context;
+            var activity = CrossCurrentActivity.Current.Activity;
             activity.FinishAffinity();
         }
     }
