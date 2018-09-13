@@ -20,9 +20,12 @@ namespace Platformer.Views
         {
             base.OnAppearing();
 
-            var result = await CrossFingerprint.Current.AuthenticateAsync("Login using your fingerprint");
-            if (result.Authenticated)
-                await Login();
+            if (await CrossFingerprint.Current.IsAvailableAsync(false))
+            {
+                var result = await CrossFingerprint.Current.AuthenticateAsync("Login using your fingerprint");
+                if (result.Authenticated)
+                    await Login();
+            }
         }
 
         private async Task Login()

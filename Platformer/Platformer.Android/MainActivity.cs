@@ -3,12 +3,7 @@ using Android.Content;
 using Android.Content.PM;
 using Android.OS;
 using Android.Util;
-using System;
-using Microsoft.AppCenter.Push;
 using Microsoft.AppCenter;
-using Newtonsoft.Json;
-using System.Net.Http;
-using System.Text;
 
 namespace Platformer.Droid
 {
@@ -25,8 +20,6 @@ namespace Platformer.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
-
-            Push.SetSenderId("1011362886006");
 
             LoadApplication(new App());
 

@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1011362886006",
+    "firebase_url": "https://platformer-761c8.firebaseio.com",
+    "project_id": "platformer-761c8",
+    "storage_bucket": "platformer-761c8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1011362886006:android:43bc2be06565b4da",
+        "android_client_info": {
+          "package_name": "com.moonko.platformer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1011362886006-onrfh733r2u2kktipte6v1d1jctreiu7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKM3AEHfUnKz1ukGk1EWrtjV1ea5Hb6yE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

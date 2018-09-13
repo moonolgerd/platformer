@@ -21,7 +21,7 @@ namespace Platformer.Droid
 
             textView.Text = $"Platformer v{info.VersionName}.{info.VersionCode}";
 
-            Task startupWork = new Task(() => { SimulateStartup(); });
+            Task startupWork = new Task(SimulateStartup);
             startupWork.Start();
         }
 
