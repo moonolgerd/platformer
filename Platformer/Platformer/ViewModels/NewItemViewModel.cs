@@ -9,15 +9,13 @@ namespace Platformer.ViewModels
         {
             Item = new Item
             {
-                Text = "Item name",
-                Description = "This is an item description.",
                 Date = DateTime.Today
             };
 
             SaveCommand = new Command<VisualElement>(page =>
             {
                 MessagingCenter.Send(this, "AddItem", Item);
-            });
+            }, a => string.IsNullOrWhiteSpace(Item.Text) && string.IsNullOrWhiteSpace(Item.Description));
 
             MinimumDate = DateTime.Today;
         }

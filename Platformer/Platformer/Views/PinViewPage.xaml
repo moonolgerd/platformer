@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:FormsPinView.Core;assembly=FormsPinView.Core"
+             xmlns:viewmodels="clr-namespace:Platformer.ViewModels"
+             x:Class="Platformer.Views.PinViewPage">
+    <!--<ContentPage.BindingContext>
+        <viewmodels:PinViewPageViewModel />
+    </ContentPage.BindingContext>-->
+    <ContentPage.Resources>
+        <viewmodels:PinViewPageViewModel x:Key="PinViewPageViewModel" />
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <local:PinView BindingContext="{StaticResource PinViewPageViewModel}"
+         HorizontalOptions="CenterAndExpand"
+         VerticalOptions="CenterAndExpand"
+         PinLength="4"
+            SuccessCommand="{Binding SuccessCommand}"
+            BackgroundColor="Maroon"
+         Validator="{Binding Validator}" />
+    </ContentPage.Content>
+</ContentPage>

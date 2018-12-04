@@ -1,4 +1,5 @@
-﻿using Foundation;
+﻿using FormsPinView.iOS;
+using Foundation;
 using System;
 using UIKit;
 using UserNotifications;
@@ -11,7 +12,8 @@ namespace Platformer.iOS
 		public override bool FinishedLaunching(UIApplication app, NSDictionary options)
 		{
 			global::Xamarin.Forms.Forms.Init();
-			LoadApplication(new App());
+            PinItemViewRenderer.Init();
+            LoadApplication(new App());
 
             // iOS 10 or later
             var authOptions = UNAuthorizationOptions.Alert | UNAuthorizationOptions.Badge | UNAuthorizationOptions.Sound;

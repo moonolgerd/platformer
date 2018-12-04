@@ -3,6 +3,7 @@ using Android.Content;
 using Android.Content.PM;
 using Android.OS;
 using Android.Util;
+using FormsPinView.Droid;
 using Microsoft.AppCenter;
 
 namespace Platformer.Droid
@@ -20,6 +21,7 @@ namespace Platformer.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            PinItemViewRenderer.Init();
 
             LoadApplication(new App());
 

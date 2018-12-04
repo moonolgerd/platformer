@@ -5,9 +5,9 @@
             xmlns:views="clr-namespace:Platformer"
             Title="Platformer"
             x:Class="Platformer.Views.MainPage">
-    <ContentPage.BindingContext>
+    <TabbedPage.BindingContext>
         <viewModels:MainViewModel />
-    </ContentPage.BindingContext>
+    </TabbedPage.BindingContext>
     <TabbedPage.ToolbarItems>
         <ToolbarItem Text="Log Out" Command="{Binding LogOutCommand}" />
     </TabbedPage.ToolbarItems>
