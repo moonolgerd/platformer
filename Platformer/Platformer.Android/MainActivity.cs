@@ -2,6 +2,7 @@
 using Android.Content;
 using Android.Content.PM;
 using Android.OS;
+using Android.Runtime;
 using Android.Util;
 using FormsPinView.Droid;
 using Microsoft.AppCenter;
@@ -19,6 +20,7 @@ namespace Platformer.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(bundle);
+            Xamarin.Essentials.Platform.Init(this, bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
             PinItemViewRenderer.Init();
@@ -44,6 +46,13 @@ namespace Platformer.Droid
             //var client = new HttpClient();
             //await client.PostAsync("http://10.0.2.2:3000/register",
             //    new StringContent(data, Encoding.UTF8, "application/json"));
+        }
+
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
+        {
+            Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+
+            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
 }

@@ -15,6 +15,11 @@ namespace Platformer.iOS
             PinItemViewRenderer.Init();
             LoadApplication(new App());
 
+            UINavigationBar.Appearance.TitleTextAttributes = new UIStringAttributes
+            {
+                ForegroundColor = UIColor.Green
+            };
+
             // iOS 10 or later
             var authOptions = UNAuthorizationOptions.Alert | UNAuthorizationOptions.Badge | UNAuthorizationOptions.Sound;
             UNUserNotificationCenter.Current.RequestAuthorization(authOptions, (granted, error) => {

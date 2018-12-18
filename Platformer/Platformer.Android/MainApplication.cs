@@ -4,6 +4,7 @@ using Android.OS;
 using Android.Runtime;
 using Plugin.CurrentActivity;
 using Plugin.Fingerprint;
+using Xamarin.Essentials;
 
 namespace Platformer.Droid
 {
@@ -21,6 +22,8 @@ namespace Platformer.Droid
             RegisterActivityLifecycleCallbacks(this);
             
             CrossFingerprint.SetCurrentActivityResolver(() => CrossCurrentActivity.Current.Activity);
+
+            var device = DeviceInfo.Model;
 
             // uncomment this line to use custom dialog
             //CrossFingerprint.SetDialogFragmentType<MyCustomDialogFragment>();
