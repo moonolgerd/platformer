@@ -1,5 +1,6 @@
 ﻿using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
+using Platformer.Shared;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

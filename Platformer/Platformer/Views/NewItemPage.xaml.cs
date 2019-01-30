@@ -1,4 +1,5 @@
-﻿using Platformer.ViewModels;
+﻿using Platformer.Shared;
+using Platformer.ViewModels;
 using Xamarin.Forms;
 
 namespace Platformer

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace Platformer
+namespace Platformer.Shared
 {
     public class Item : INotifyPropertyChanged
     {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Platformer.Shared;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -8,7 +9,7 @@ namespace Platformer.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>() ?? new MockDataStore();
+        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>() ?? new DataStore();
 
         bool isBusy;
         public bool IsBusy

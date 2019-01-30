@@ -64,4 +64,12 @@
 	  </EmbeddedResource>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Models\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\Platformer.Shared\Platformer.Shared.csproj" />
+	</ItemGroup>
+
 </Project>

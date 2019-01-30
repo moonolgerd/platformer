@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AppCenter.Analytics;
+using Platformer.Shared;
 using Platformer.ViewModels;
 using Xamarin.Forms;
 

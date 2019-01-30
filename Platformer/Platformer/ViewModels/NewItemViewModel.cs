@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Platformer.Shared;
+using System;
 using Xamarin.Forms;
 
 namespace Platformer.ViewModels

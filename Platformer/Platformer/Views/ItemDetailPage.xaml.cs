@@ -1,4 +1,5 @@
 ﻿using System;
+using Platformer.Shared;
 using Platformer.ViewModels;
 using Xamarin.Forms;
 
