@@ -7,15 +7,28 @@ using Microsoft.AppCenter.Push;
 using System.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Platformer.Configuration;
+using Prism;
+using Platformer.ViewModels;
+using Prism.Ioc;
+using Platformer.Shared;
 
 namespace Platformer
 {
-    public partial class App : Application
+    public partial class App
     {
-        public App()
+        private IConfigurationRoot _configuration;
+
+        public App(IPlatformInitializer initializer = null)
+            : base(initializer)
         {
-            InitializeComponent();
-            
+        }
+
+        public App() : this(null)
+        {   
+        }
+
+        protected override void RegisterTypes(IContainerRegistry containerRegistry)
+        {
 #if PRODUCTION
             Debug.WriteLine("Loading Configuration for Production");
             var file = $"{nameof(Platformer)}.appsettings.Production.json";
@@ -27,17 +40,17 @@ namespace Platformer
             var file = $"{nameof(Platformer)}.appsettings.Development.json";
 #endif
 
-            var config = new ConfigurationBuilder().AddJsonFile(new ResourceFileProvider(), file, false, false).Build();
-            var environment = config["Environment"];
+            _configuration = new ConfigurationBuilder().AddJsonFile(new ResourceFileProvider(), file, false, false).Build();
 
-            if (!IsUserLoggedIn)
-            {
-                MainPage = new NavigationPage(new LoginPage());
-            }
-            else
-            {
-                MainPage = new NavigationPage(new MainPage());
-            }
+            containerRegistry.RegisterForNavigation<NavigationPage>();
+            containerRegistry.RegisterForNavigation<LoginPage, LoginViewModel>();
+            containerRegistry.RegisterForNavigation<MainPage, MainViewModel>();
+            containerRegistry.RegisterForNavigation<PinViewPage, PinViewPageViewModel>();
+            containerRegistry.RegisterForNavigation<NewItemPage, NewItemViewModel>();
+            containerRegistry.RegisterForNavigation<SignUpPage, SignUpViewModel>();
+            containerRegistry.RegisterSingleton<IDataStore<Item>, DataStore>();
+
+            containerRegistry.RegisterInstance<IConfiguration>(_configuration);
         }
 
         public static bool IsUserLoggedIn { get; set; }
@@ -73,6 +86,20 @@ namespace Platformer
                 typeof(Analytics), typeof(Crashes), typeof(Push));
             AppCenter.LogLevel = LogLevel.Verbose;
             base.OnStart(); 
+        }
+
+        protected override async void OnInitialized()
+        {
+            InitializeComponent();
+        
+            if (!IsUserLoggedIn)
+            {
+                await NavigationService.NavigateAsync("NavigationPage/LoginPage");
+            }
+            else
+            {
+                await NavigationService.NavigateAsync("NavigationPage/MainPage");
+            }
         }
     }
 }

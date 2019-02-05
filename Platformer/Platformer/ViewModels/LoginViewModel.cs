@@ -1,23 +1,27 @@
 ﻿using Microsoft.AppCenter.Analytics;
+using Prism.Navigation;
 using Xamarin.Forms;
 
 namespace Platformer.ViewModels
 {
     class LoginViewModel : BaseViewModel
     {
+        private readonly INavigationService navigationService;
         private string _email;
         private string _password;
 
-        public LoginViewModel()
+        public LoginViewModel(INavigationService navigationService)
         {
+            this.navigationService = navigationService;
             LoginCommand = new Command(() =>
             {
                 MessagingCenter.Send(this, "Success");
                 Analytics.TrackEvent("Logged in successfully");
             }, CanExecute);
-            SignUpCommand = new Command(() =>
+            SignUpCommand = new Command(async () =>
             {
-                MessagingCenter.Send(this, "SignUp");
+                await this.navigationService.NavigateAsync("platformer://SignUpPage");
+                //MessagingCenter.Send(this, "SignUp");
             });
         }
         public Command LoginCommand { get; set; }

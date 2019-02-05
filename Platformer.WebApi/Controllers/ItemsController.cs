@@ -10,7 +10,7 @@ namespace Platformer.WebApi.Controllers
     [ApiController]
     public class ItemsController : ControllerBase
     {
-        // GET api/values
+        // GET api/items
         [HttpGet]
         public ActionResult<IEnumerable<Item>> Get()
         {
@@ -29,36 +29,51 @@ namespace Platformer.WebApi.Controllers
             return items;
         }
 
-        // GET api/values/5
+        // GET api/items/5
         [HttpGet("{id}")]
-        public ActionResult<Item> Get(int id)
+        public ActionResult<Item> Get(string id)
         {
-            return new Item();
+            return new Item()
+            {
+                Id = id
+            };
         }
 
-        // POST api/values
+        // POST api/items
         [HttpPost]
-        public IActionResult Post([FromBody] Item item)
+        public IActionResult Post(Item item)
         {
             try
             {
-                throw new Exception();
+                if (!ModelState.IsValid)
+                    throw new Exception();
+                return Ok();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return BadRequest(ErrorCode.CouldNotCreateItem);
             }
         }
 
-        // PUT api/values/5
+        // PUT api/items/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] Item item)
+        public IActionResult Put(string id, Item item)
         {
+            try
+            {
+                if (!ModelState.IsValid)
+                    throw new Exception();
+                return Ok();
+            }
+            catch (Exception)
+            {
+                return BadRequest(ErrorCode.CouldNotUpdateItem);
+            }
         }
 
-        // DELETE api/values/5
+        // DELETE api/items/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public void Delete(string id)
         {
         }
     }

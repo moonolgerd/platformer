@@ -2,7 +2,7 @@
 
 using Xamarin.Forms;
 
-namespace Platformer
+namespace Platformer.Views
 {
     public partial class AboutPage : ContentPage
     {

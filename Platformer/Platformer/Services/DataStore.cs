@@ -1,7 +1,10 @@
-﻿using Platformer.Shared;
+﻿using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
+using Platformer.Shared;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
 [assembly: Xamarin.Forms.Dependency(typeof(Platformer.DataStore))]
@@ -9,39 +12,44 @@ namespace Platformer
 {
     public class DataStore : IDataStore<Item>
     {
-        List<Item> items;
-
-        public DataStore()
+        private readonly HttpClient _httpClient;
+        private readonly Uri _uri;
+        
+        public DataStore(IConfiguration configuration)
         {
-            
+            _httpClient = new HttpClient();
+            _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            _uri = new Uri(configuration["ApiUrl"]);
         }
 
         public async Task<bool> AddItemAsync(Item item)
         {
-            items.Add(item);
-
-            return await Task.FromResult(true);
+            var message = await _httpClient.PostAsync(_uri, new StringContent(item.ToString()));
+            return message.StatusCode == System.Net.HttpStatusCode.OK;
         }
 
         public async Task<bool> UpdateItemAsync(Item item)
         {
-            var _item = items.Where((Item arg) => arg.Id == item.Id).FirstOrDefault();
-            items.Remove(_item);
-            items.Add(item);
-
-            return await Task.FromResult(true);
+            var message = await _httpClient.PutAsync(_uri + item.Id, new StringContent(item.ToString()));
+            return message.StatusCode == System.Net.HttpStatusCode.OK;
         }
 
         public async Task<bool> DeleteItemAsync(string id)
         {
-            var _item = items.Where((Item arg) => arg.Id == id).FirstOrDefault();
-            items.Remove(_item);
-
-            return await Task.FromResult(true);
+            var message = await _httpClient.DeleteAsync(_uri + id);
+            return message.StatusCode == System.Net.HttpStatusCode.OK;
         }
 
-        public async Task<Item> GetItemAsync(string id) => await Task.FromResult(items.FirstOrDefault(s => s.Id == id));
+        public async Task<Item> GetItemAsync(string id)
+        {
+            var message = await _httpClient.GetAsync(_uri + id);
+            return JsonConvert.DeserializeObject<Item>(await message.Content.ReadAsStringAsync());
+        }
 
-        public async Task<IEnumerable<Item>> GetItemsAsync(bool forceRefresh = false) => await Task.FromResult(items);
+        public async Task<IEnumerable<Item>> GetItemsAsync(bool forceRefresh = false)
+        {
+            var message = await _httpClient.GetAsync(_uri);
+            return JsonConvert.DeserializeObject<IEnumerable<Item>>(await message.Content.ReadAsStringAsync());
+        }
     }
 }

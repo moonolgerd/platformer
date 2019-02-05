@@ -1,22 +1,36 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewModels="clr-namespace:Platformer.ViewModels;assembly=Platformer"
-             Title="Login"
-             x:Class="Platformer.Views.LoginPage">
-    <ContentPage.BindingContext>
-        <viewModels:LoginViewModel />
-    </ContentPage.BindingContext>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Login"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    x:Class="Platformer.Views.LoginPage">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Sign Up" Command="{Binding SignUpCommand}" />
+        <ToolbarItem
+            Text="Sign Up"
+            Command="{Binding SignUpCommand}" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Email" FontSize="Medium" />
-            <Entry Text="{Binding Email}" FontSize="Small" Placeholder="Email"/>
-            <Label Text="Password" FontSize="Medium" />
-            <Entry Text="{Binding Password}" FontSize="Small" Placeholder="Password" IsPassword="True"/>
-            <Button Command="{Binding LoginCommand}" Text="Login" />
+            <Label
+                Text="Email"
+                FontSize="Medium" />
+            <Entry
+                Text="{Binding Email}"
+                FontSize="Small"
+                Placeholder="Email" />
+            <Label
+                Text="Password"
+                FontSize="Medium" />
+            <Entry
+                Text="{Binding Password}"
+                FontSize="Small"
+                Placeholder="Password"
+                IsPassword="True" />
+            <Button
+                Command="{Binding LoginCommand}"
+                Text="Login" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

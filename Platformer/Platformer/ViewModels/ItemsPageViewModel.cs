@@ -1,6 +1,8 @@
 ﻿using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
+using Microsoft.Extensions.Configuration;
 using Platformer.Shared;
+using Prism.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,15 +12,21 @@ using Xamarin.Forms;
 
 namespace Platformer.ViewModels
 {
-    public class ItemsViewModel : BaseViewModel
+    public class ItemsPageViewModel : BaseViewModel
     {
+        private readonly INavigationService navigationService;
+
+        public IDataStore<Item> DataStore { get; }
+
         public ObservableCollection<Item> Items { get; set; }
         public Command LoadItemsCommand { get; set; }
 
         public Command AddCommand { get; set; }
 
-        public ItemsViewModel()
+        public ItemsPageViewModel(INavigationService navigationService, IDataStore<Item> dataStore)
         {
+            this.navigationService = navigationService;
+            DataStore = dataStore;
             Title = "Browse";
             Items = new ObservableCollection<Item>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());

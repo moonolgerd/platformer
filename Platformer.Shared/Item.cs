@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.CompilerServices;
 
 namespace Platformer.Shared
@@ -13,6 +14,7 @@ namespace Platformer.Shared
         private string _description;
         private DateTime? _date;
 
+        [Required]
         public string Id { get => _id; set => SetProperty(ref _id, value); }
         public string Text { get => _text; set => SetProperty(ref _text, value); }
         public string Description { get => _description; set => SetProperty(ref _description, value); }

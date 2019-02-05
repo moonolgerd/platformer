@@ -1,24 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Microsoft.AppCenter.Analytics;
 using Platformer.Shared;
 using Platformer.ViewModels;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
-namespace Platformer
+namespace Platformer.Views
 {
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ItemsPage : ContentPage
     {
-        ItemsViewModel viewModel;
-
         public ItemsPage()
         {
             InitializeComponent();
-
-            BindingContext = viewModel = new ItemsViewModel();
-
-            MessagingCenter.Subscribe<ItemsViewModel>(this, "NewItem", async p =>
+            
+            MessagingCenter.Subscribe<ItemsPageViewModel>(this, "NewItem", async p =>
                 await Navigation.PushAsync(new NewItemPage()));
         }
 
@@ -41,6 +37,11 @@ namespace Platformer
         protected override void OnAppearing()
         {
             base.OnAppearing();
+
+            var viewModel = BindingContext as ItemsPageViewModel;
+
+            if (viewModel == null)
+                return;
 
             if (viewModel.Items.Count == 0)
                 viewModel.LoadItemsCommand.Execute(null);
