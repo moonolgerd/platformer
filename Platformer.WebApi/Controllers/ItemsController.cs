@@ -8,25 +8,18 @@ namespace Platformer.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [ApiConventionType(typeof(DefaultApiConventions))]
     public class ItemsController : ControllerBase
     {
+        private readonly ItemsRepository itemsRepository;
+
+        public ItemsController(ItemsRepository itemsRepository) => this.itemsRepository = itemsRepository;
+
         // GET api/items
         [HttpGet]
         public ActionResult<IEnumerable<Item>> Get()
         {
-            var items = new List<Item>();
-            var mockItems = new List<Item>
-            {
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Tanechka", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Olezhka", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Someone Else", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Fourth item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Fifth item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Sixth item", Description="This is an item description." },
-            };
-            items.AddRange(from item in mockItems
-                           select item);
-            return items;
+            return Ok(itemsRepository.GetItems());
         }
 
         // GET api/items/5
@@ -47,6 +40,7 @@ namespace Platformer.WebApi.Controllers
             {
                 if (!ModelState.IsValid)
                     throw new Exception();
+                itemsRepository.Insert(item);
                 return Ok();
             }
             catch (Exception)
@@ -56,6 +50,12 @@ namespace Platformer.WebApi.Controllers
         }
 
         // PUT api/items/5
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="item"></param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public IActionResult Put(string id, Item item)
         {
