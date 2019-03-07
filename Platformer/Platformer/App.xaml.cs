@@ -48,6 +48,7 @@ namespace Platformer
             containerRegistry.RegisterForNavigation<PinViewPage, PinViewPageViewModel>();
             containerRegistry.RegisterForNavigation<NewItemPage, NewItemViewModel>();
             containerRegistry.RegisterForNavigation<SignUpPage, SignUpViewModel>();
+            containerRegistry.RegisterForNavigation<ForgotPasswordPage, ForgotPasswordPageViewModel>();
             containerRegistry.RegisterSingleton<IDataStore<Item>, DataStore>();
 
             containerRegistry.RegisterInstance<IConfiguration>(_configuration);
