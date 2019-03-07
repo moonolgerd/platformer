@@ -1,4 +1,5 @@
 ﻿using Microsoft.AppCenter.Analytics;
+using Platformer.Views;
 using Prism.Navigation;
 using Xamarin.Forms;
 
@@ -20,13 +21,18 @@ namespace Platformer.ViewModels
             }, CanExecute);
             SignUpCommand = new Command(async () =>
             {
-                await this.navigationService.NavigateAsync("platformer://SignUpPage");
-                //MessagingCenter.Send(this, "SignUp");
+                await this.navigationService.NavigateAsync($"platformer://{nameof(SignUpPage)}");
+            });
+            ForgotPasswordCommand = new Command(async () =>
+            {
+                await this.navigationService.NavigateAsync($"NavigationPage/{nameof(ForgotPasswordPage)}");
             });
         }
         public Command LoginCommand { get; set; }
 
         public Command SignUpCommand { get; set; }
+
+        public Command ForgotPasswordCommand { get; set; }
 
         public string Email
         {

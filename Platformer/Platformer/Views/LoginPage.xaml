@@ -12,25 +12,35 @@
             Command="{Binding SignUpCommand}" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Margin="10, 20">
             <Label
                 Text="Email"
-                FontSize="Medium" />
+                TextColor="Yellow"
+                FontSize="Large" />
             <Entry
                 Text="{Binding Email}"
                 FontSize="Small"
                 Placeholder="Email" />
             <Label
                 Text="Password"
-                FontSize="Medium" />
+                TextColor="Yellow"
+                FontSize="Large" />
             <Entry
                 Text="{Binding Password}"
                 FontSize="Small"
                 Placeholder="Password"
                 IsPassword="True" />
             <Button
+                Margin="0,20"
                 Command="{Binding LoginCommand}"
+                FontSize="Large"
                 Text="Login" />
+
+            <Button
+                Text="Forgot Password?"
+                BackgroundColor="Gray"
+                VerticalOptions="EndAndExpand"
+                Command="{Binding ForgotPasswordCommand}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
