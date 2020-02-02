@@ -8,7 +8,7 @@ using Xamarin.Essentials;
 
 namespace Platformer.Droid
 {
-    [Application]
+    [Application(UsesCleartextTraffic =true)]
     public class MainApplication : Application, Application.IActivityLifecycleCallbacks
     {
         public MainApplication(IntPtr handle, JniHandleOwnership transer)

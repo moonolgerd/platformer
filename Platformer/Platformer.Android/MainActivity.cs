@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.Util;
 using FormsPinView.Droid;
 using Microsoft.AppCenter;
+using System.Net;
 
 namespace Platformer.Droid
 {
@@ -35,6 +36,8 @@ namespace Platformer.Droid
                     Log.Debug(TAG, "Key: {0} Value: {1}", key, value);
                 }
             }
+
+            ServicePointManager.ServerCertificateValidationCallback += (o, cert, chain, errors) => true;
 
             var id = await AppCenter.GetInstallIdAsync();
             Log.Debug(id.ToString(), id.ToString());

@@ -17,7 +17,12 @@ namespace Platformer
         
         public DataStore(IConfiguration configuration)
         {
-            _httpClient = new HttpClient();
+            
+            var httpClientHandler = new HttpClientHandler
+            {
+                ServerCertificateCustomValidationCallback = (_, _2, _3, _4) => true
+            };
+            _httpClient = new HttpClient(httpClientHandler);
             _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             _uri = new Uri(configuration["ApiUrl"]);
         }
