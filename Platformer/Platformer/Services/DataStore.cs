@@ -23,6 +23,7 @@ namespace Platformer
                 ServerCertificateCustomValidationCallback = (_, _2, _3, _4) => true
             };
             _httpClient = new HttpClient(httpClientHandler);
+            _httpClient.Timeout = TimeSpan.FromSeconds(10);
             _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             _uri = new Uri(configuration["ApiUrl"]);
         }

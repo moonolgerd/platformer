@@ -19,10 +19,6 @@ namespace Platformer.Configuration
         public DateTimeOffset LastModified { get; }
         public bool IsDirectory => false;
 
-        public Stream CreateReadStream()
-        {
-            var assembly = Assembly.GetExecutingAssembly();
-            return assembly.GetManifestResourceStream(Name);
-        }
+        public Stream CreateReadStream() => Assembly.GetExecutingAssembly().GetManifestResourceStream(Name);
     }
 }

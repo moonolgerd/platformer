@@ -7,17 +7,11 @@ namespace Platformer.Configuration
     {
         private readonly string filter;
 
-        public ResourceChangeToken(string filter)
-        {
-            this.filter = filter;
-        }
+        public ResourceChangeToken(string filter) => this.filter = filter;
 
         public bool HasChanged => false;
         public bool ActiveChangeCallbacks { get; }
 
-        public IDisposable RegisterChangeCallback(Action<object> callback, object state)
-        {
-            throw new NotImplementedException();
-        }
+        public IDisposable RegisterChangeCallback(Action<object> callback, object state) => throw new NotImplementedException();
     }
 }

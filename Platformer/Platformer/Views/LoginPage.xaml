@@ -4,7 +4,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="Login"
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    xmlns:vm ="clr-namespace:Platformer.ViewModels"
     prism:ViewModelLocator.AutowireViewModel="True"
+    x:DataType="vm:LoginViewModel"
     x:Class="Platformer.Views.LoginPage">
     <ContentPage.ToolbarItems>
         <ToolbarItem

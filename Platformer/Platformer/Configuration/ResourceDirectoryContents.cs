@@ -8,17 +8,11 @@ namespace Platformer.Configuration
     {
         private readonly string subpath;
 
-        public ResourceDirectoryContents(string subpath)
-        {
-            this.subpath = subpath;
-        }
+        public ResourceDirectoryContents(string subpath) => this.subpath = subpath;
 
         public bool Exists { get; }
 
-        public IEnumerator<IFileInfo> GetEnumerator()
-        {
-            throw new System.NotImplementedException();
-        }
+        public IEnumerator<IFileInfo> GetEnumerator() => throw new System.NotImplementedException();
 
         IEnumerator IEnumerable.GetEnumerator()
         {

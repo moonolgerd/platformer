@@ -1,5 +1,6 @@
 ﻿using Platformer.ViewModels;
 using Plugin.Fingerprint;
+using Plugin.Fingerprint.Abstractions;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -20,9 +21,10 @@ namespace Platformer.Views
         {
             base.OnAppearing();
 
-            if (await CrossFingerprint.Current.IsAvailableAsync(false))
+            if (await CrossFingerprint.Current.IsAvailableAsync(true))
             {
-                var result = await CrossFingerprint.Current.AuthenticateAsync("Login using your fingerprint");
+                var result = await CrossFingerprint.Current.AuthenticateAsync(new AuthenticationRequestConfiguration(
+                    "Authentication Required", "Use your fingerprint to verify your identity"));
                 if (result.Authenticated)
                     await Login();
             }

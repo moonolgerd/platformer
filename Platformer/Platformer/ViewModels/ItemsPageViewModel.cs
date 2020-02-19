@@ -67,7 +67,6 @@ namespace Platformer.ViewModels
             {
                 Debug.WriteLine(ex);
                 Crashes.TrackError(ex);
-
             }
             finally
             {
